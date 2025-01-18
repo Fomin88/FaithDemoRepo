@@ -1,0 +1,9 @@
+{
+	"name": "faithadf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4a087208-1381-4b0a-9702-4870417a369a",
+		"tenantId": "a6482476-025b-4da9-b568-5585f2b9576d"
+	}
+}

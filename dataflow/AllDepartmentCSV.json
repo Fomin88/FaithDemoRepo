@@ -1,0 +1,86 @@
+{
+	"name": "AllDepartmentCSV",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DotDataDataset",
+						"type": "DatasetReference"
+					},
+					"name": "ITemployess"
+				},
+				{
+					"dataset": {
+						"referenceName": "DotDataDataset",
+						"type": "DatasetReference"
+					},
+					"name": "HREmployees"
+				},
+				{
+					"dataset": {
+						"referenceName": "DotDataDataset",
+						"type": "DatasetReference"
+					},
+					"name": "PayrollEmployees"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "dotoutputDataset",
+						"type": "DatasetReference"
+					},
+					"name": "Allemployeessink"
+				},
+				{
+					"dataset": {
+						"referenceName": "dotoutputDataset",
+						"type": "DatasetReference"
+					},
+					"name": "HREmployeessink"
+				},
+				{
+					"dataset": {
+						"referenceName": "dotoutputDataset",
+						"type": "DatasetReference"
+					},
+					"name": "PayrollEmployeessink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "UnionAllEmployees"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> ITemployess",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> HREmployees",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> PayrollEmployees",
+				"ITemployess, HREmployees, PayrollEmployees union(byName: true)~> UnionAllEmployees",
+				"UnionAllEmployees sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> Allemployeessink",
+				"HREmployees sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> HREmployeessink",
+				"PayrollEmployees sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> PayrollEmployeessink"
+			]
+		}
+	}
+}
