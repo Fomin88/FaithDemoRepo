@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "DotDataDataset",
+						"referenceName": "DelimitedText1",
 						"type": "DatasetReference"
 					},
 					"name": "ITemployess"
@@ -55,7 +55,13 @@
 				}
 			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          {1 empid} as string,",
+				"          name as string,",
+				"          country as string,",
+				"          depaartment as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> ITemployess",
 				"source(allowSchemaDrift: true,",
