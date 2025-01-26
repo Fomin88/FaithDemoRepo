@@ -5,11 +5,17 @@
 			"referenceName": "juju",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"filemanes": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "cvs",
 				"folderPath": "input2222",
 				"container": "ju111"
 			},
