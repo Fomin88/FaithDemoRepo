@@ -1,0 +1,23 @@
+{
+	"name": "juoutputdataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "juju",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "output222",
+				"container": "ju111"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
