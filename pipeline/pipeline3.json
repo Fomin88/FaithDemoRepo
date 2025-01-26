@@ -13,16 +13,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "Source",
-						"value": "ju111/input4/Salaries.csv"
-					},
-					{
-						"name": "Destination",
-						"value": "ju111/output/"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
@@ -58,7 +49,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "judataset",
+						"referenceName": "juinputdataset",
 						"type": "DatasetReference"
 					}
 				],
